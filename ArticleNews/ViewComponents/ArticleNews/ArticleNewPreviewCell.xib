@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ArticleNewPreviewCell" customModule="ArticleNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="167"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="321" height="167"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HHN-xc-YBk">
+                        <rect key="frame" x="12" y="92" width="297" height="63"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tay-Gl-oy7">
+                                <rect key="frame" x="0.0" y="0.0" width="144.5" height="63"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="label"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSj-aM-2hH">
+                                <rect key="frame" x="152.5" y="0.0" width="144.5" height="63"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="13"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Readbean 2.0 turn into more than a hobby" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtq-lh-6J1">
+                        <rect key="frame" x="12" y="12" width="297" height="68"/>
+                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Dtq-lh-6J1" secondAttribute="trailing" constant="12" id="86l-ZU-VCJ"/>
+                <constraint firstItem="Dtq-lh-6J1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="EyZ-JL-9Ev"/>
+                <constraint firstItem="Dtq-lh-6J1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="Gss-oE-qbP"/>
+                <constraint firstAttribute="bottom" secondItem="HHN-xc-YBk" secondAttribute="bottom" constant="12" id="SeI-hf-FAM"/>
+                <constraint firstAttribute="trailing" secondItem="HHN-xc-YBk" secondAttribute="trailing" constant="12" id="Vc4-Nh-Ew6"/>
+                <constraint firstItem="HHN-xc-YBk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="dxk-sp-RBo"/>
+                <constraint firstItem="HHN-xc-YBk" firstAttribute="top" secondItem="Dtq-lh-6J1" secondAttribute="bottom" constant="12" id="zbZ-td-Tmu"/>
+            </constraints>
+            <size key="customSize" width="321" height="167"/>
+            <connections>
+                <outlet property="comment" destination="Tay-Gl-oy7" id="1rQ-iJ-NB2"/>
+                <outlet property="label" destination="Dtq-lh-6J1" id="O2b-QQ-buY"/>
+                <outlet property="link" destination="BSj-aM-2hH" id="TEk-Dh-LAv"/>
+            </connections>
+            <point key="canvasLocation" x="334.05797101449281" y="136.94196428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
+    </resources>
+</document>

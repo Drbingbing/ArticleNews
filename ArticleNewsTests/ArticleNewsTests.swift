@@ -9,28 +9,71 @@ import XCTest
 @testable import ArticleNews
 
 class ArticleNewsTests: XCTestCase {
+    
+    private var mockInteractor: ArticleNewsRemoteDataSourceProtocol!
+    private var viewModelToTest: TopStoriesViewModelProtocol!
+    private var remoteDataSource: RemoteDataSourceProtocol!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        
+        remoteDataSource = MockRemoteDataSource()
+        mockInteractor = remoteDataSource.articleNewsDataSource()
+        viewModelToTest = TopStoriesViewModel(interactor: mockInteractor)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockInteractor = nil
+        viewModelToTest = nil
+        remoteDataSource = nil
+        try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testStoriesEmpty() {
+        
+        let expectation = XCTestExpectation(description: "Should get empty state")
+        
+        viewModelToTest.getTopStoryIds { result in
+            switch result {
+            case .success(let ids):
+                XCTAssertTrue(ids.isEmpty)
+                expectation.fulfill()
+            case .failure:
+                XCTFail("not possible")
+                expectation.fulfill()
+            }
         }
+        
+        wait(for: [expectation], timeout: 5.0)
     }
+    
+}
 
+class MockRemoteDataSource: RemoteDataSourceProtocol {
+    
+    func articleNewsDataSource() -> ArticleNewsRemoteDataSourceProtocol {
+        return MockArticleRemoteDataSource()
+    }
+}
+
+class MockArticleRemoteDataSource: ArticleNewsRemoteDataSourceProtocol {
+    
+    func getTopStoryIDs(completion: @escaping (Result<StoryIDResult, Error>) -> Void) {
+        completion(.success([]))
+    }
+    
+    func getArticle(_ id: Int, completion: @escaping (Result<Article, Error>) -> Void) {
+        let article = Article(id: 1,
+                              by: "bing bing",
+                              descendants: 391,
+                              kids: [],
+                              score: 1000,
+                              time: 0,
+                              title: "Hertzbleed Attack",
+                              type: "story",
+                              url: "")
+        completion(.success(article))
+    }
+    
+    
 }
